@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patina Design Studio | Interior Architectural Design</title>
+    <meta name="description" content="High-end boutique interior architectural design studio specialising in bespoke residential projects.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+
+    
+    <style>
+:root {
+    /* Color Palette */
+    --bg-primary: hsl(40, 20%, 98%);
+    --bg-secondary: hsl(40, 15%, 94%);
+    --text-primary: hsl(0, 0%, 15%);
+    --text-secondary: hsl(0, 0%, 40%);
+    --accent: hsl(36, 40%, 40%);
+    --accent-light: hsl(36, 40%, 60%);
+    --white: #ffffff;
+    --black: #000000;
+
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Spacing */
+    --p-gutter: 2rem;
+    --p-section: 8rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+h1 { font-size: clamp(3rem, 8vw, 5rem); }
+h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h3 { font-size: 1.75rem; }
+
+p {
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.lead {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+}
+
+/* Layout Utilities */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--p-gutter);
+}
+
+.full-bleed {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.text-center { text-align: center; }
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.4s ease;
+}
+
+header.scrolled {
+    padding: 1.5rem 4rem;
+    background: rgba(253, 253, 251, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 0.2rem;
+}
+
+.logo-main {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.logo-sub {
+    font-size: 0.6rem;
+    font-weight: 400;
+    margin-top: -5px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 0.75rem;
+    letter-spacing: 0.15rem;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+.cta-link {
+    border: 1px solid var(--text-primary);
+    padding: 0.8rem 1.5rem;
+    transition: all 0.3s ease !important;
+}
+
+.cta-link:hover {
+    background: var(--text-primary);
+    color: var(--white) !important;
+}
+
+/* Hero Section */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-align: center;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+#hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: -1;
+}
+
+.hero-content h1 {
+    margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.scroll-indicator .line {
+    width: 1px;
+    height: 80px;
+    background: rgba(255,255,255,0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-indicator .line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--white);
+    animation: scroll-anim 2s infinite ease-in-out;
+}
+
+@keyframes scroll-anim {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* Projects Section */
+#projects {
+    padding: var(--p-section) 0;
+}
+
+.section-header {
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: center;
+}
+
+.section-title {
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: var(--accent);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+}
+
+.project-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1.2;
+    cursor: pointer;
+}
+
+.project-card.large {
+    grid-column: span 2;
+    aspect-ratio: 16 / 9;
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
+}
+
+.project-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 3rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: var(--white);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.project-card:hover .project-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* About Section */
+.alternate-bg {
+    background-color: var(--bg-secondary);
+    padding: var(--p-section) 0;
+}
+
+.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+.split-image img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(20px 20px 0 var(--accent-light));
+}
+
+.text-link {
+    display: inline-block;
+    margin-top: 2rem;
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    transition: transform 0.3s ease;
+}
+
+.text-link:hover {
+    transform: translateX(10px);
+}
+
+/* Services Section */
+#services {
+    padding: var(--p-section) 0;
+}
+
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.service-item {
+    padding: 3rem;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.4s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.service-item .number {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--accent-light);
+    opacity: 0.3;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.service-item h3 {
+    margin-bottom: 1rem;
+}
+
+/* CTA Section */
+#cta {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    overflow: hidden;
+}
+
+.cta-content h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.button {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background: var(--white);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.2rem;
+    margin-top: 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background: var(--accent);
+    color: var(--white);
+}
+
+/* Footer */
+footer {
+    background: var(--bg-secondary);
+    padding: 6rem 0 3rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+footer h4 {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer ul li {
+    margin-bottom: 0.8rem;
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--accent);
+}
+
+.footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    header { padding: 1.5rem 2rem; }
+    .split { grid-template-columns: 1fr; gap: 3rem; }
+    .services-list { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+    nav {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--bg-primary);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+        z-index: 999;
+    }
+    nav.mobile-open {
+        display: flex;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+    }
+    nav a { font-size: 1rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.large { aspect-ratio: 1/1; }
+    .services-list { grid-template-columns: 1fr; }
+}
+
+/* Animations */
+.reveal-text {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.reveal-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 1.5s ease 0.3s;
+}
+
+.fade-in.visible {
+    opacity: 1;
+}
+
+/* Reveal (used on split-image, section-header, etc.) */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Project card and service item entrance */
+.project-card,
+.service-item {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.4s ease;
+}
+
+.project-card.visible,
+.service-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger children (JS adds 'visible' with delay) */
+.stagger-child {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.stagger-child.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Section header */
+.section-header {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.section-header.visible {
+    opacity: 1;
+}
+
+/* ─── Custom Cursor ─────────────────────────────────── */
+#cursor {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
+    mix-blend-mode: multiply;
+}
+
+#cursor.cursor-grow {
+    width: 48px;
+    height: 48px;
+    background: var(--accent-light);
+}
+
+#cursor-dot {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: var(--text-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+}
+
+/* ─── Hamburger Menu Toggle ─────────────────────────── */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 1001;
+    padding: 4px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 26px;
+    height: 1.5px;
+    background: var(--text-primary);
+    transition: all 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+    transform-origin: center;
+}
+
+.menu-toggle.open span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    transform: translateY(-7.5px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; }
+}
+
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <div class="logo">
+            <span class="logo-main" id="cms-studio-name">PATINA</span>
+            <span class="logo-sub">DESIGN STUDIO</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#projects" class="nav-link">PROJECTS</a></li>
+                <li><a href="#services" class="nav-link">SERVICES</a></li>
+                <li><a href="#about" class="nav-link">ABOUT</a></li>
+                <li><a href="#process" class="nav-link">PROCESS</a></li>
+                <li><a href="#media" class="nav-link">MEDIA</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <li><a href="#contact" class="nav-link">CONTACT</a></li>
+                <li><a href="#enquiries" class="cta-link">ENQUIRIES</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <main>
+        <!-- ── Hero ─────────────────────────────────────────── -->
+        <section id="hero" class="full-bleed">
+            <div class="hero-bg" id="cms-hero-bg"></div>
+            <div class="hero-content">
+                <h1 class="reveal-text">
+                    <span id="cms-hero-headline">Timeless. Bespoke.</span>
+                    <br><em id="cms-hero-headline-em">Interior Architecture.</em>
+                </h1>
+                <p class="fade-in" id="cms-hero-sub">Crafting spaces that resonate with soul and sophistication.</p>
+                <div class="scroll-indicator">
+                    <div class="line"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Projects ──────────────────────────────────────── -->
+        <section id="projects" class="container">
+            <div class="section-header">
+                <h2 class="section-title">Selected Projects</h2>
+            </div>
+            <div class="projects-grid" id="cms-projects-grid">
+                <!-- Populated by script.js from _data/projects.json -->
+                <!-- Fallback static cards shown until JS runs -->
+                <div class="project-card large">
+                    <img src="https://static.wixstatic.com/media/9dda45_70f17f9847a24c94859db54abd786239~mv2.jpg" alt="Vaucluse Residence">
+                    <div class="project-info"><h3>Vaucluse Residence</h3><p>Residential Architecture</p></div>
+                </div>
+                <div class="project-card">
+                    <img src="https://static.wixstatic.com/media/9dda45_b7af8a3661a64938b895d8d2cfb258f0~mv2.jpg" alt="Modern Minimalist">
+                    <div class="project-info"><h3>Modern Minimalist</h3><p>Interior Design</p></div>
+                </div>
+                <div class="project-card">
+                    <img src="https://static.wixstatic.com/media/9dda45_6a0281fefb704386b0c34f8fc6fdd266~mv2.jpg" alt="Coastal Living">
+                    <div class="project-info"><h3>Coastal Living</h3><p>Kitchen &amp; Joinery</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── About / Studio ────────────────────────────────── -->
+        <section id="about" class="alternate-bg">
+            <div class="container split">
+                <div class="split-content">
+                    <h2 class="section-title" id="cms-studio-title">The Studio</h2>
+                    <p class="lead" id="cms-studio-lead">Patina Design Studio is a boutique interior architecture practice based in Sydney, dedicated to the art of bespoke residential design.</p>
+                    <p id="cms-studio-body">Our philosophy is rooted in the belief that every space should tell a story. We blend textures, light, and form to create interiors that are not only beautiful but deeply personal and functional.</p>
+                    <a href="#process" class="text-link" id="cms-studio-cta">Our Process →</a>
+                </div>
+                <div class="split-image reveal">
+                    <img id="cms-studio-img" src="https://static.wixstatic.com/media/9dda45_1757b0e6b05f4c6fb346513525d4e3e4~mv2.jpeg" alt="Studio Detail">
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Services ──────────────────────────────────────── -->
+        <section id="services" class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Services</h2>
+            </div>
+            <div class="services-list" id="cms-services-list">
+                <!-- Populated by script.js from _data/services.json -->
+                <div class="service-item">
+                    <span class="number">01</span>
+                    <div class="service-content"><h3>Interior Architecture</h3><p>Comprehensive spatial planning, structural modifications, and detailed architectural drawings for luxury residences.</p></div>
+                </div>
+                <div class="service-item">
+                    <span class="number">02</span>
+                    <div class="service-content"><h3>Bespoke Joinery</h3><p>Custom-designed cabinetry and furniture that maximizes utility while elevating the aesthetic of every room.</p></div>
+                </div>
+                <div class="service-item">
+                    <span class="number">03</span>
+                    <div class="service-content"><h3>Material &amp; Finish Selection</h3><p>Meticulously curated palettes of stones, timbers, and fabrics that age gracefully and develop their own patina.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CTA Banner ─────────────────────────────────────── -->
+        <section id="cta" class="full-bleed accent-bg">
+            <div class="hero-bg" id="cms-cta-bg" style="background-image: url('https://static.wixstatic.com/media/9dda45_4d75dc710c164e42811fcfd622ba53d4~mv2.jpeg'); opacity: 0.3;"></div>
+            <div class="cta-content container text-center">
+                <h2 id="cms-cta-heading">Start Your Journey</h2>
+                <p id="cms-cta-sub">Begin your bespoke design experience with Patina Design Studio.</p>
+                <a href="#enquiries" class="button" id="cms-cta-btn">ENQUIRE NOW</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="logo">
+                    <span class="logo-main" id="cms-footer-name">PATINA</span>
+                    <span class="logo-sub">DESIGN STUDIO</span>
+                </div>
+                <p id="cms-footer-tagline">Bespoke Interior Architecture</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p id="cms-footer-location">Sydney, Australia</p>
+                <p><a id="cms-footer-email" href="mailto:info@patinadesignstudio.com.au">info@patinadesignstudio.com.au</a></p>
+            </div>
+            <div class="footer-social">
+                <h4>Follow</h4>
+                <p><a id="cms-footer-instagram" href="#">Instagram</a></p>
+                <p><a id="cms-footer-pinterest" href="#">Pinterest</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; <span id="cms-footer-year">2026</span> <span id="cms-footer-copy-name">Patina Design Studio</span>. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // ═══════════════════════════════════════════════════════
+    // CMS CONTENT LOADER
+    // Fetches _data/*.json and populates DOM elements by ID.
+    // Falls back gracefully to static HTML if fetch fails.
+    // ═══════════════════════════════════════════════════════
+
+    async function fetchJSON(path) {
+        try {
+            const res = await fetch(path);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return await res.json();
+        } catch (e) {
+            console.warn(`[CMS] Could not load ${path}:`, e.message);
+            return null;
+        }
+    }
+
+    function set(id, value) {
+        const el = document.getElementById(id);
+        if (el && value !== undefined && value !== null && value !== '') {
+            el.textContent = value;
+        }
+    }
+
+    function setHref(id, href) {
+        const el = document.getElementById(id);
+        if (el && href) {
+            el.setAttribute('href', href);
+            el.textContent = href; // display URL text (for email/social)
+        }
+    }
+
+    function setAttr(id, attr, value) {
+        const el = document.getElementById(id);
+        if (el && value) el.setAttribute(attr, value);
+    }
+
+    function buildProjectsGrid(projects) {
+        const grid = document.getElementById('cms-projects-grid');
+        if (!grid || !projects?.length) return;
+        grid.innerHTML = projects.map(p => `
+            <div class="project-card${p.featured ? ' large' : ''}">
+                <img src="${p.image}" alt="${p.image_alt || p.name}" loading="lazy">
+                <div class="project-info">
+                    <h3>${p.name}</h3>
+                    <p>${p.category}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function buildServicesList(services) {
+        const list = document.getElementById('cms-services-list');
+        if (!list || !services?.length) return;
+        list.innerHTML = services.map(s => `
+            <div class="service-item">
+                <span class="number">${s.number}</span>
+                <div class="service-content">
+                    <h3>${s.title}</h3>
+                    <p>${s.description}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function updateDOM(cmsData) {
+        if (!cmsData) return;
+        const { hero, studio, projects, services, settings } = cmsData;
+
+        // ── Hero ───────────────────────────────────────────
+        if (hero) {
+            set('cms-hero-headline', hero.headline);
+            set('cms-hero-headline-em', hero.headline_em);
+            set('cms-hero-sub', hero.subheadline);
+            const bg = document.getElementById('cms-hero-bg');
+            if (bg && hero.background_image) {
+                bg.style.backgroundImage = `url('${hero.background_image}')`;
+            }
+        }
+
+        // ── Studio / About ─────────────────────────────────
+        if (studio) {
+            set('cms-studio-title', studio.title);
+            set('cms-studio-lead', studio.lead);
+            set('cms-studio-body', studio.body);
+            const cta = document.getElementById('cms-studio-cta');
+            if (cta) {
+                cta.textContent = studio.cta_label || 'Our Process →';
+                cta.setAttribute('href', studio.cta_href || '#process');
+            }
+            setAttr('cms-studio-img', 'src', studio.image);
+            setAttr('cms-studio-img', 'alt', studio.image_alt || 'Studio Detail');
+        }
+
+        // ── Projects ───────────────────────────────────────
+        if (projects) {
+            const projectsArray = Array.isArray(projects) ? projects : projects.projects;
+            if (projectsArray) buildProjectsGrid(projectsArray);
+        }
+
+        // ── Services ───────────────────────────────────────
+        if (services) {
+            const servicesArray = Array.isArray(services) ? services : services.services;
+            if (servicesArray) buildServicesList(servicesArray);
+        }
+
+        // ── Settings ───────────────────────────────────────
+        if (settings) {
+            // Header
+            const studioNameEl = document.getElementById('cms-studio-name');
+            if (studioNameEl && settings.studio_name) {
+                // Show only the first word in the logo mark
+                studioNameEl.textContent = settings.studio_name.split(' ')[0].toUpperCase();
+            }
+
+            // CTA section
+            set('cms-cta-heading', settings.cta_heading);
+            set('cms-cta-sub', settings.cta_subheading);
+            set('cms-cta-btn', settings.cta_button_label);
+            const ctaBg = document.getElementById('cms-cta-bg');
+            if (ctaBg && settings.cta_background_image) {
+                ctaBg.style.backgroundImage = `url('${settings.cta_background_image}')`;
+            }
+
+            // Footer
+            set('cms-footer-name', settings.studio_name?.split(' ')[0]?.toUpperCase());
+            set('cms-footer-tagline', settings.tagline);
+            set('cms-footer-location', settings.location);
+            set('cms-footer-year', settings.copyright_year);
+            set('cms-footer-copy-name', settings.studio_name);
+
+            const emailEl = document.getElementById('cms-footer-email');
+            if (emailEl && settings.email) {
+                emailEl.textContent = settings.email;
+                emailEl.setAttribute('href', `mailto:${settings.email}`);
+            }
+
+            const igEl = document.getElementById('cms-footer-instagram');
+            if (igEl) {
+                igEl.textContent = 'Instagram';
+                if (settings.instagram_url) igEl.setAttribute('href', settings.instagram_url);
+            }
+            const piEl = document.getElementById('cms-footer-pinterest');
+            if (piEl) {
+                piEl.textContent = 'Pinterest';
+                if (settings.pinterest_url) piEl.setAttribute('href', settings.pinterest_url);
+            }
+        }
+
+        // Re-observe newly built cards (after grid/list rebuild)
+        document.querySelectorAll(
+            '.project-card, .service-item, .stagger-child'
+        ).forEach(el => {
+            el.classList.remove('visible');
+            revealObserver.observe(el);
+        });
+        document.querySelectorAll('.services-list, .footer-grid').forEach(el => {
+            el.querySelectorAll(':scope > *').forEach(child => {
+                child.classList.add('stagger-child');
+            });
+            staggerObserver.observe(el);
+        });
+    }
+
+    async function loadContent() {
+        // Setup message listener for real-time Wix Velo updates
+        window.addEventListener('message', (event) => {
+            const msg = event.data;
+            if (msg && msg.type === 'WIX_CMS_UPDATE') {
+                console.log('[Wix Sync] Received CMS data update from Wix Velo:', msg.data);
+                updateDOM(msg.data);
+            }
+        });
+
+        // Inform Wix parent page that iframe is loaded and ready to receive data
+        try {
+            window.parent.postMessage({ type: 'WIX_IFRAME_READY' }, '*');
+        } catch (e) {
+            console.warn('[Wix Sync] Standalone mode: Cannot reach window.parent');
+        }
+
+        // Fetch local JSON files as fallback for local dev / standalone mode
+        const [hero, studio, projectsData, servicesData, settings] = await Promise.all([
+            fetchJSON('_data/hero.json'),
+            fetchJSON('_data/studio.json'),
+            fetchJSON('_data/projects.json'),
+            fetchJSON('_data/services.json'),
+            fetchJSON('_data/settings.json'),
+        ]);
+
+        if (hero || studio || projectsData || servicesData || settings) {
+            updateDOM({
+                hero,
+                studio,
+                projects: projectsData?.projects,
+                services: servicesData?.services,
+                settings
+            });
+        }
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // HEADER SCROLL EFFECT
+    // ═══════════════════════════════════════════════════════
+    const header = document.getElementById('main-header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ═══════════════════════════════════════════════════════
+    // MOBILE MENU TOGGLE
+    // ═══════════════════════════════════════════════════════
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileNav  = document.querySelector('nav');
+
+    menuToggle.addEventListener('click', () => {
+        const isOpen = menuToggle.classList.toggle('open');
+        mobileNav.classList.toggle('mobile-open', isOpen);
+        document.body.classList.toggle('menu-active', isOpen);
+    });
+
+    document.querySelectorAll('.nav-link, .cta-link').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('open');
+            mobileNav.classList.remove('mobile-open');
+            document.body.classList.remove('menu-active');
+        });
+    });
+
+    // ═══════════════════════════════════════════════════════
+    // SMOOTH SCROLL
+    // ═══════════════════════════════════════════════════════
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // ═══════════════════════════════════════════════════════
+    // PARALLAX HERO
+    // ═══════════════════════════════════════════════════════
+    const heroBg = document.getElementById('cms-hero-bg');
+    if (heroBg) {
+        window.addEventListener('scroll', () => {
+            heroBg.style.transform = `translateY(${window.scrollY * 0.4}px)`;
+        }, { passive: true });
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // SCROLL REVEAL (Intersection Observer)
+    // ═══════════════════════════════════════════════════════
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll(
+        '.reveal-text, .fade-in, .reveal, .project-card, .service-item, .section-header'
+    ).forEach(el => revealObserver.observe(el));
+
+    // ═══════════════════════════════════════════════════════
+    // STAGGERED CHILDREN
+    // ═══════════════════════════════════════════════════════
+    const staggerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const children = entry.target.querySelectorAll(':scope > *');
+                children.forEach((child, i) => {
+                    setTimeout(() => child.classList.add('visible'), i * 150);
+                });
+                staggerObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.services-list, .footer-grid').forEach(el => {
+        el.querySelectorAll(':scope > *').forEach(child => child.classList.add('stagger-child'));
+        staggerObserver.observe(el);
+    });
+
+    // ═══════════════════════════════════════════════════════
+    // HERO ENTRY ANIMATION
+    // ═══════════════════════════════════════════════════════
+    setTimeout(() => {
+        const heroText = document.querySelector('.reveal-text');
+        const heroPara = document.querySelector('.fade-in');
+        if (heroText) heroText.classList.add('visible');
+        if (heroPara) setTimeout(() => heroPara.classList.add('visible'), 600);
+    }, 400);
+
+    // ═══════════════════════════════════════════════════════
+    // CUSTOM CURSOR (Desktop only)
+    // ═══════════════════════════════════════════════════════
+    if (window.matchMedia('(pointer: fine)').matches) {
+        const cursor    = document.createElement('div'); cursor.id    = 'cursor';
+        const cursorDot = document.createElement('div'); cursorDot.id = 'cursor-dot';
+        document.body.append(cursor, cursorDot);
+
+        let mouseX = 0, mouseY = 0, dotX = 0, dotY = 0;
+
+        document.addEventListener('mousemove', e => {
+            mouseX = e.clientX; mouseY = e.clientY;
+            cursor.style.left = mouseX + 'px';
+            cursor.style.top  = mouseY + 'px';
+        });
+
+        const animateDot = () => {
+            dotX += (mouseX - dotX) * 0.1;
+            dotY += (mouseY - dotY) * 0.1;
+            cursorDot.style.left = dotX + 'px';
+            cursorDot.style.top  = dotY + 'px';
+            requestAnimationFrame(animateDot);
+        };
+        animateDot();
+
+        document.querySelectorAll('a, button, .project-card').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('cursor-grow'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-grow'));
+        });
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // KICK OFF CONTENT LOAD
+    // ═══════════════════════════════════════════════════════
+    loadContent();
+
+});
+
+    </script>
+</body>
+</html>

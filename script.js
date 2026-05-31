@@ -65,14 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
         `).join('');
     }
 
-    async function loadContent() {
-        const [hero, studio, projectsData, servicesData, settings] = await Promise.all([
-            fetchJSON('_data/hero.json'),
-            fetchJSON('_data/studio.json'),
-            fetchJSON('_data/projects.json'),
-            fetchJSON('_data/services.json'),
-            fetchJSON('_data/settings.json'),
-        ]);
+    function updateDOM(cmsData) {
+        if (!cmsData) return;
+        const { hero, studio, projects, services, settings } = cmsData;
 
         // ── Hero ───────────────────────────────────────────
         if (hero) {
@@ -92,21 +87,23 @@ document.addEventListener('DOMContentLoaded', () => {
             set('cms-studio-body', studio.body);
             const cta = document.getElementById('cms-studio-cta');
             if (cta) {
-                cta.textContent = studio.cta_label;
-                cta.setAttribute('href', studio.cta_href);
+                cta.textContent = studio.cta_label || 'Our Process →';
+                cta.setAttribute('href', studio.cta_href || '#process');
             }
             setAttr('cms-studio-img', 'src', studio.image);
-            setAttr('cms-studio-img', 'alt', studio.image_alt);
+            setAttr('cms-studio-img', 'alt', studio.image_alt || 'Studio Detail');
         }
 
         // ── Projects ───────────────────────────────────────
-        if (projectsData?.projects) {
-            buildProjectsGrid(projectsData.projects);
+        if (projects) {
+            const projectsArray = Array.isArray(projects) ? projects : projects.projects;
+            if (projectsArray) buildProjectsGrid(projectsArray);
         }
 
         // ── Services ───────────────────────────────────────
-        if (servicesData?.services) {
-            buildServicesList(servicesData.services);
+        if (services) {
+            const servicesArray = Array.isArray(services) ? services : services.services;
+            if (servicesArray) buildServicesList(servicesArray);
         }
 
         // ── Settings ───────────────────────────────────────
@@ -165,6 +162,43 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             staggerObserver.observe(el);
         });
+    }
+
+    async function loadContent() {
+        // Setup message listener for real-time Wix Velo updates
+        window.addEventListener('message', (event) => {
+            const msg = event.data;
+            if (msg && msg.type === 'WIX_CMS_UPDATE') {
+                console.log('[Wix Sync] Received CMS data update from Wix Velo:', msg.data);
+                updateDOM(msg.data);
+            }
+        });
+
+        // Inform Wix parent page that iframe is loaded and ready to receive data
+        try {
+            window.parent.postMessage({ type: 'WIX_IFRAME_READY' }, '*');
+        } catch (e) {
+            console.warn('[Wix Sync] Standalone mode: Cannot reach window.parent');
+        }
+
+        // Fetch local JSON files as fallback for local dev / standalone mode
+        const [hero, studio, projectsData, servicesData, settings] = await Promise.all([
+            fetchJSON('_data/hero.json'),
+            fetchJSON('_data/studio.json'),
+            fetchJSON('_data/projects.json'),
+            fetchJSON('_data/services.json'),
+            fetchJSON('_data/settings.json'),
+        ]);
+
+        if (hero || studio || projectsData || servicesData || settings) {
+            updateDOM({
+                hero,
+                studio,
+                projects: projectsData?.projects,
+                services: servicesData?.services,
+                settings
+            });
+        }
     }
 
     // ═══════════════════════════════════════════════════════
