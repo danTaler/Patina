@@ -1,9 +1,9 @@
 import { defineConfig } from "tinacms";
 
 export default defineConfig({
-  branch: process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main",
-  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID || "7642199477181662226", // Get this from tina.io
-  token: process.env.TINA_TOKEN || "7642199477181662226", // Get this from tina.io
+  branch: process.env.HEAD || process.env.BRANCH || "main",
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID!, // Set in Netlify env vars from tina.io
+  token: process.env.TINA_TOKEN!, // Set in Netlify env vars from tina.io
   build: {
     outputFolder: "admin",
     publicFolder: ".",
