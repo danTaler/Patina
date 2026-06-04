@@ -1,0 +1,55 @@
+fragment HeroParts on Hero {
+  __typename
+  headline
+  headline_em
+  subheadline
+  background_image
+}
+
+fragment StudioParts on Studio {
+  __typename
+  title
+  lead
+  body
+  cta_label
+  cta_href
+  image
+  image_alt
+}
+
+fragment ProjectsParts on Projects {
+  __typename
+  projects {
+    __typename
+    name
+    category
+    image
+    image_alt
+    featured
+  }
+}
+
+fragment ServicesParts on Services {
+  __typename
+  services {
+    __typename
+    number
+    title
+    description
+  }
+}
+
+fragment SettingsParts on Settings {
+  __typename
+  studio_name
+  tagline
+  location
+  email
+  instagram_url
+  pinterest_url
+  cta_heading
+  cta_subheading
+  cta_button_label
+  cta_background_image
+  copyright_year
+}

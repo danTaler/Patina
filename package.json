@@ -1,0 +1,30 @@
+{
+  "name": "patina",
+  "version": "1.0.0",
+  "description": "rrrr",
+  "main": "script.js",
+  "scripts": {
+    "dev": "tinacms dev -c \"serve .\"",
+    "build": "tinacms build",
+    "build:local": "tinacms build --local"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danTaler/Patina.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/danTaler/Patina/issues"
+  },
+  "homepage": "https://github.com/danTaler/Patina#readme",
+  "dependencies": {
+    "@tinacms/cli": "^2.4.3",
+    "tinacms": "^3.9.0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.6"
+  }
+}
